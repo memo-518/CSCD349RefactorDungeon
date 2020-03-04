@@ -1,0 +1,2 @@
+# CSCD349RefactorDungeon
+It is your job to refactor that code to improve structure, readability, maintainability, and usability.  Employ the Object Oriented concepts you have learned throughout the quarter to accomplish this task.  Utilize patterns, code smell refactors, OO principles (e.g. 'favor composition over inheritance' or 'program to an interface, not an implementation).  Any improvement you can make to the existing design is a refactor.  Something as simple as changing visibility of a method or field suffices.  Choosing better names is also legitimate. 
