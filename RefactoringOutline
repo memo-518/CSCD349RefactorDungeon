@@ -1,5 +1,12 @@
-Implimneting Scanner
-Removing unused varibiles
-getting rid of useless methods(CompareTo)
-Use factory for monsters
-use Stratagy for heros
+- Implimneting Scanner
+- Removing unused varibiles
+- getting rid of useless methods(CompareTo)
+- Use factory for monsters
+- use Stratagy for heros
+- Hero and monster are concrete classes.
+- Its easy to add between the diffrenet behavoir heroes and monsters and each one will works well.
+- Each hero has HeroBehavior and each Monster has his own MonsterBehavior.
+- HeroFactory responsible for adding new heroes.
+- MonsterFactory will be resposible for adding new monster everytime with their attack style.
+- I have applied a Strategy Pattern for Hero so each hero will have diffrentes behavior, I used interface so we can switch.
+- Also I have applied Strategy Pattern for Monster so each monster will have his own behave.
