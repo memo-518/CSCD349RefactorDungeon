@@ -1,48 +1,4 @@
-/**
- * Title: Dungeon.java
- *
- * Description: Driver file for Heroes and Monsters project
- *
- * Copyright:    Copyright (c) 2001
- * Company: Code Dogs Inc.
- * I.M. Knurdy
- *
- * History:
- *  11/4/2001: Wrote program
- *    --created DungeonCharacter class
- *    --created Hero class
- *    --created Monster class
- *    --had Hero battle Monster
- *    --fixed attack quirks (dead monster can no longer attack)
- *    --made Hero and Monster abstract
- *    --created Warrior
- *    --created Ogre
- *    --made Warrior and Ogre battle
- *    --added battleChoices to Hero
- *    --added special skill to Warrior
- *    --made Warrior and Ogre battle
- *    --created Sorceress
- *    --created Thief
- *    --created Skeleton
- *    --created Gremlin
- *    --added game play features to Dungeon.java (this file)
- *  11/27/2001: Finished documenting program
- * version 1.0
- */
 
-
-
-/*
-  This class is the driver file for the Heroes and Monsters project.  It will
-  do the following:
-
-  1.  Allow the user to choose a hero
-  2.  Randomly select a monster
-  3.  Allow the hero to battle the monster
-
-  Once a battle concludes, the user has the option of repeating the above
-
-*/
 public class Dungeon
 {
     public static void main(String[] args)
@@ -68,7 +24,7 @@ this task
 ---------------------------------------------------------------------*/
 	public static Hero chooseHero()
 	{
-		int choice;
+		int choice = -1;
 		Hero theHero;
 
 		System.out.println("Choose a hero:\n" +
@@ -76,17 +32,13 @@ this task
 						   "2. Sorceress\n" +
 						   "3. Thief");
 		choice = Keyboard.readInt();
-
-		switch(choice)
-		{
-			case 1: return new Warrior();
-
-			case 2: return new Sorceress();
-
-			case 3: return new Thief();
-
-			default: System.out.println("invalid choice, returning Thief");
-				     return new Thief();
+        while(choice < 1 || choice > 3) {
+            System.out.println("Invalid choice. Please enter a valid number .");
+            choice = Keyboard.readInt();
+        }
+        HeroFactory factory = new HeroFactory();
+        return factory.createNewCharacter(choice);
+		
 		}//end switch
 	}//end chooseHero method
 
@@ -99,18 +51,9 @@ a polymorphic reference (Monster) to accomplish this task.
 		int choice;
 
 		choice = (int)(Math.random() * 3) + 1;
-
-		switch(choice)
-		{
-			case 1: return new Ogre();
-
-			case 2: return new Gremlin();
-
-			case 3: return new Skeleton();
-
-			default: System.out.println("invalid choice, returning Skeleton");
-				     return new Skeleton();
-		}//end switch
+        MonsterFactory factory = new MonsterFactory();
+        return factory.createCharacter(choice);
+		
 	}//end generateMonster method
 
 /*-------------------------------------------------------------------
