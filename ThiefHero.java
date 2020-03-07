@@ -1,36 +1,38 @@
 
 
-public class SorceressHero implements HeroBehavior {
+public class ThiefHero implements HeroBehavior {
 
-    public SorceressHero(){}
+    public ThiefHero(){}
 
     public void chooseHero(DungeonCharacter opponent, DungeonCharacter hero)
-    {
-	    int hPoints;
-
-		hPoints = (int)(Math.random() * (hero.damageMax - hero.damageMin + 1)) + hero.damageMin;
-		hero.addHitPoints(hPoints);
-		System.out.println(hero.name + " added [" + hPoints + "] points.\n"
-							+ "Total hit points remaining are: "
-							+ hero.hitPoints);
-		 System.out.println();
-
-    }//end increaseHitPoints method
-
-//-----------------------------------------------------------------
-	public void attack(DungeonCharacter opponent, DungeonCharacter hero)
 	{
-		System.out.println(hero.name + " casts a spell of fireball at " +
-							opponent.getName() + ":");
-	}//end override of attack method
+		double surprise = Math.random();
+		if (surprise <= .4)
+		{
+			System.out.println("Surprise attack was successful!\n" +
+								hero.getName() + " gets an additional turn.");
+			hero.increaseTurns();
+			hero.attack(opponent);
+		}//end surprise
+		else if (surprise >= .9)
+		{
+			System.out.println("Uh oh! " + opponent.getName() + " saw you and" +
+								" blocked your attack!");
+		}
+		else
+		    hero.attack(opponent);
+
+	}//end surpriseAttack method
+
+    public void attack(DungeonCharacter opponent, DungeonCharacter hero) {
+        
+    }
 
     public int prompt() {
         System.out.println("1. Attack Opponent");
-        System.out.println("2. Increase Hit Points");
+        System.out.println("2. Surprise Attack");
         System.out.print("Choose an option: ");
         int choice = Keyboard.readInt();
         return choice;
     }
-
-//----------------------------------------------------------------
 }
