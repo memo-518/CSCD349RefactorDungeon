@@ -68,7 +68,7 @@ this task
 ---------------------------------------------------------------------*/
 	public static Hero chooseHero()
 	{
-		int choice;
+		int choice = -1;
 		Hero theHero;
 
 		System.out.println("Choose a hero:\n" +
@@ -76,41 +76,27 @@ this task
 						   "2. Sorceress\n" +
 						   "3. Thief");
 		choice = Keyboard.readInt();
-
-		switch(choice)
-		{
-			case 1: return new Warrior();
-
-			case 2: return new Sorceress();
-
-			case 3: return new Thief();
-
-			default: System.out.println("invalid choice, returning Thief");
-				     return new Thief();
-		}//end switch
+        while(choice < 1 || choice > 3) {
+            System.out.println("Invalid choice. Please enter a valid number .");
+            choice = Keyboard.readInt();
+        }
+        HeroFactory factory = new HeroFactory();
+        return factory.createNewCharacter(choice);
+		
 	}//end chooseHero method
 
 /*-------------------------------------------------------------------
 generateMonster randomly selects a Monster and returns it.  It utilizes
 a polymorphic reference (Monster) to accomplish this task.
 ---------------------------------------------------------------------*/
-	public static Monster generateMonster()
+		public static Monster generateMonster()
 	{
 		int choice;
 
 		choice = (int)(Math.random() * 3) + 1;
-
-		switch(choice)
-		{
-			case 1: return new Ogre();
-
-			case 2: return new Gremlin();
-
-			case 3: return new Skeleton();
-
-			default: System.out.println("invalid choice, returning Skeleton");
-				     return new Skeleton();
-		}//end switch
+        	MonsterFactory factory = new MonsterFactory();
+        	return factory.createCharacter(choice);
+			
 	}//end generateMonster method
 
 /*-------------------------------------------------------------------
