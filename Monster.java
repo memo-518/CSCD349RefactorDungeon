@@ -1,19 +1,9 @@
 
-
-/**
- * Title:
- * Description:
- * Copyright:    Copyright (c) 2001
- * Company:
- * @author
- * @version 1.0
- */
-
-
-public abstract class Monster extends DungeonCharacter
+public class Monster extends DungeonCharacter
 {
 	protected double chanceToHeal;
 	protected int minHeal, maxHeal;
+	protected MonsterBehavior attack;
 
 //-----------------------------------------------------------------
   public Monster(String name, int hitPoints, int attackSpeed,
@@ -48,6 +38,11 @@ public abstract class Monster extends DungeonCharacter
 
   }//end heal method
 
+  public void attack(DungeonCharacter opponent) {
+	  this.attack.attack(opponent, this);
+	  super.attack(opponent);
+  }
+
 //-----------------------------------------------------------------
  public void subtractHitPoints(int hitPoints)
  {
@@ -55,6 +50,10 @@ public abstract class Monster extends DungeonCharacter
 		heal();
 
  }//end method
+
+ public void setAttack(MonsterBehavior attack) {
+	 this.attack = attack;
+ }
 
 
 }//end Monster class
